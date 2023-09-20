@@ -50,7 +50,7 @@ function randomColor(){
     
         box.addEventListener("mouseover", () => {
             box.style.backgroundColor = randomColor;
-            box.style.opacity = parseFloat(box.style.opacity || 0) + 0.3;
+            box.style.opacity = parseFloat(box.style.opacity || 0) + 0.2;
         });
         box.addEventListener('mouseout', () => {
             setTimeout(() => {
