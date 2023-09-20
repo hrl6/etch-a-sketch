@@ -3,7 +3,7 @@ const DEFAULT_COLOR = '#e4e4e4';
 const container = document.getElementById('container');
 const btnResize = document.getElementById('btnGridResize');
 const btnRandomColor = document.getElementById('btnRandomColor');
-
+const btnResetColor = document.getElementById('btnResetColor');
 
 function gridResize(gridTiles){
     container.style.gridTemplateColumns = `repeat(${gridTiles}, 1fr)`;
@@ -18,11 +18,13 @@ function gridResize(gridTiles){
     
         createDiv.addEventListener("mouseover", () => {
             createDiv.style.backgroundColor = "#4b4b4b";
+            createDiv.style.opacity = parseFloat(createDiv.style.opacity || 0) + 0.3;
         });
 
         createDiv.addEventListener("mouseout", () => {
             setTimeout(() => {
                 createDiv.style.backgroundColor = DEFAULT_COLOR;
+                createDiv.style.opacity = 1;
             }, 5000);
         })
     }
@@ -32,6 +34,7 @@ function resetColor(){
     const boxReset = document.querySelectorAll(".square-box");
     boxReset.forEach((box) => {
         box.style.backgroundColor = DEFAULT_COLOR;
+        box.style.opacity = 1;
     });
 }
 
@@ -47,10 +50,12 @@ function randomColor(){
     
         box.addEventListener("mouseover", () => {
             box.style.backgroundColor = randomColor;
+            box.style.opacity = parseFloat(box.style.opacity || 0) + 0.3;
         });
         box.addEventListener('mouseout', () => {
             setTimeout(() => {
                 box.style.backgroundColor = DEFAULT_COLOR;
+                box.style.opacity = 1;
             }, 5000);
         });
     });
@@ -73,3 +78,7 @@ btnResize.addEventListener('click', () => {
 btnRandomColor.addEventListener('click', () => {
     randomColor();
 });
+
+btnResetColor.addEventListener('click', () => {
+    resetColor();
+})
